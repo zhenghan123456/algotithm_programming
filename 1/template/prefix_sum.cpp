@@ -20,6 +20,6 @@ int main()
     for (int i = 0; i < n; i++)
     {
         cin >> l >> r;
-        cout << pre[r] - pre[l - 1] << endl;
+        cout << pre[r - 1] - pre[l - 2] << endl;
     }
 }
