@@ -1,45 +1,46 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int maxn = 1e5 + 5;
+const int maxn = 1e5 + 10;
 int a[maxn], diff[maxn], secdiff[maxn];
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
     int n, q;
     cin >> n >> q;
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    diff[0] = secdiff[0] = a[0];
+    // 构建一阶差分
+    diff[0] = a[0];
     for (int i = 1; i < n; i++)
-    {
-        diff[i] = a[i] - a[i - 1]; // 一阶差分
-    }
+        diff[i] = a[i] - a[i - 1];
+    // 构建二阶差分
+    secdiff[0] = diff[0];
     for (int i = 1; i < n; i++)
-    {
-        secdiff[i] = diff[i] - diff[i - 1]; // 二阶差分
-    }
-    for (int i = 0; i < q; i++)
+        secdiff[i] = diff[i] - diff[i - 1];
+
+    while (q--)
     {
         int l, r, v;
         cin >> l >> r >> v;
-        l--, r--;
+        l--, r--; // 转为0-based
         secdiff[l] += v;
-        secdiff[r + 1] -= v * (r - l + 2);
-        secdiff[r + 2] += v * (r - l + 1);
+        if (r + 1 < n)
+            secdiff[r + 1] -= v * (r - l + 2);
+        if (r + 2 < n)
+            secdiff[r + 2] += v * (r - l + 1);
     }
-    // 将二阶差分还原为一阶差分
+    // 第一次前缀和：二阶差分 → 一阶差分
     for (int i = 1; i < n; i++)
-    {
-        diff[i] = secdiff[i] + secdiff[i - 1];
-    }
-    // 将一阶差分还原为原数组
+        diff[i] = secdiff[i] + diff[i - 1];
+    // 第二次前缀和：一阶差分 → 原数组
+    a[0] = diff[0];
     for (int i = 1; i < n; i++)
-    {
-        a[i] = diff[i] + diff[i - 1];
-    }
+        a[i] = a[i - 1] + diff[i];
+
     for (int i = 0; i < n; i++)
-    {
         cout << a[i] << " ";
-    }
+    return 0;
 }
