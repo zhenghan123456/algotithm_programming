@@ -4,6 +4,8 @@ const int maxn = 1e3 + 10;
 int a[maxn][maxn], diff[maxn][maxn];
 int main()
 {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
     int n, m, q;
     cin >> n >> m >> q;
     for (int i = 0; i < n; ++i)
