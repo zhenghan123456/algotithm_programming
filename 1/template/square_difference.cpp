@@ -51,7 +51,7 @@ int main()
     {
         for (int j = 0; j < n; j++)
         {
-            diff[j][i] += diff[j][i - 1]
+            diff[j][i] += diff[j][i - 1];
         }
     }
 
