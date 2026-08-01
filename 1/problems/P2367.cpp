@@ -19,7 +19,7 @@ int main()
     d[0] = a[0];
     _rep(i, 1, n)
     {
-        d[i] = d[i - 1] + a[i];
+        d[i] = a[i] + a[i - 1];
     }
     _for(i, p)
     {
