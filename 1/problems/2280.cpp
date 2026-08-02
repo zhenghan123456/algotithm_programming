@@ -4,7 +4,8 @@ using namespace std;
 #define _rep(i, a, b) for (int i = a; i < b; i++)
 #define endl '\n'
 const int maxn = 1e4 + 10;
-int mp[maxn][maxn], pre[maxn][maxn];
+const int maxx = 5e3 + 10;
+int mp[maxx][maxx], pre[maxx][maxx];
 int main()
 {
     ios::sync_with_stdio(0);
@@ -17,8 +18,34 @@ int main()
     {
         int x, y, v;
         cin >> x >> y >> v;
+        x++;
+        y++;
         mp[x][y] += v;
     }
 
     // 初始化前缀和
+    _rep(i, 1, maxx)
+    {
+        _rep(j, 1, maxx)
+        {
+            pre[i][j] = mp[i][j] + pre[i - 1][j] + pre[i][j - 1] - pre[i - 1][j - 1];
+        }
+    }
+
+    int maxv = INT_MIN; // 最小值
+
+    // 求解
+    _rep(i, 1, maxx - m)
+    {
+        _rep(j, 1, maxx - m)
+        {
+            int i2 = i + m;
+            int j2 = j + m;
+            int sum = pre[i2][j2] - pre[i - 1][j2] - pre[i2][j - 1] + pre[i - 1][j - 1];
+            if (sum > maxv)
+                maxv = sum;
+        }
+    }
+
+    cout << maxv << endl;
 }
