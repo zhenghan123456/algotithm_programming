@@ -1,31 +1,23 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
 using namespace std;
-typedef long long ll;
-#define _for(i, n) for (int i = 0; i < n; i++)
-#define _rep(i, a, b) for (int i = a; i < b; i++)
-#define endl '\n'
-const int maxn = 2e5 + 10;
-int a[maxn], pre[maxn];
+const int INF = 0x3f3f3f3f;
+
 int main()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
     int n;
     cin >> n;
-    _for(i, n) cin >> a[i];
-    pre[0] = a[0];
-    for (int i = 1; i < n; i++)
-        pre[i] = pre[i - 1] + a[i];
-    int maxx = INT_MIN;
-    _for(i, n - 1)
+    long long sum = 0;   // 当前前缀和s[r]
+    long long min_s = 0; // 最小前缀和，初始s[0]=0
+    long long ans = -INF;
+    for (int i = 1; i <= n; ++i)
     {
-        _rep(j, i + 1, n)
-        {
-            int sum = pre[j] - pre[i];
-            if (maxx < sum)
-                maxx = sum;
-        }
+        int x;
+        cin >> x;
+        sum += x; // sum = s[i]
+        ans = max(ans, sum - min_s);
+        min_s = min(min_s, sum);
     }
-    cout << maxx << endl;
+    cout << ans << endl;
     return 0;
 }
