@@ -16,7 +16,6 @@ int main()
     pre[0] = a[0];
     for (int i = 1; i < n; i++)
         pre[i] = pre[i - 1] + a[i];
-    ll ans = 0;
     int maxx = INT_MIN;
     _for(i, n - 1)
     {
@@ -27,6 +26,6 @@ int main()
                 maxx = sum;
         }
     }
-    cout << sum << endl;
+    cout << maxx << endl;
     return 0;
 }
