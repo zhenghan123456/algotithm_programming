@@ -3,7 +3,6 @@ using namespace std;
 #define _for(i, n) for (int i = 0; i < n; i++)
 #define _rep(i, a, b) for (int i = a; i < b; i++)
 #define endl '\n'
-const int maxn = 1e4 + 10;
 const int maxx = 5e3 + 10;
 int mp[maxx][maxx], pre[maxx][maxx];
 int main()
@@ -39,8 +38,8 @@ int main()
     {
         _rep(j, 1, maxx - m)
         {
-            int i2 = i + m;
-            int j2 = j + m;
+            int i2 = i + m - 1;
+            int j2 = j + m - 1;
             int sum = pre[i2][j2] - pre[i - 1][j2] - pre[i2][j - 1] + pre[i - 1][j - 1];
             if (sum > maxv)
                 maxv = sum;
