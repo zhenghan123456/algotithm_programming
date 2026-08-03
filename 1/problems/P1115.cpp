@@ -12,7 +12,7 @@ int main()
     long long sum = 0;   // 当前前缀和s[r]
     long long min_s = 0; // 最小前缀和，初始s[0]=0
     long long ans = INT_MIN;
-    for (int i = 1; i <= n; ++i)
+    while (n--)
     {
         int x;
         cin >> x;
