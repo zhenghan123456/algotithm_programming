@@ -1,1 +1,21 @@
+# C++ 编译产物
 *.exe
+*.o
+*.obj
+*.out
+*.a
+*.lib
+*.dll
+
+# VS / CLion 缓存
+.idea/
+.vscode/
+*.suo
+*.sln
+*.vcxproj
+cmake-build-*/
+
+# 临时文件
+*.tmp
+*.log
+*.bak
