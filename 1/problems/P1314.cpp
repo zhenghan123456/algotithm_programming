@@ -5,7 +5,7 @@ typedef long long ll;
 #define _rep(i, a, b) for (int i = a; i < b; i++)
 #define endl '\n'
 
-const int MAXN = 200005;
+const int maxn = 200005;
 int n, m;
 ll sum;
 int w[maxn], v[maxn];

@@ -5,9 +5,9 @@ typedef long long ll;
 #define _rep(i, a, b) for (int i = a; i < b; i++)
 #define endl '\n'
 
-const int MAXN = 105;
-bool g[MAXN][MAXN]; // 邻接矩阵
-bool vis[MAXN];
+const int maxn = 105;
+bool g[maxn][maxn]; // 邻接矩阵
+bool vis[maxn];
 int n, m;
 
 void dfs(int u)
