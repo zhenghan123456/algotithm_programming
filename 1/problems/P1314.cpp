@@ -8,9 +8,9 @@ typedef long long ll;
 const int MAXN = 200005;
 int n, m;
 ll sum;
-int w[MAXN], v[MAXN];
-int lft[MAXN], rt[MAXN];
-ll cnt[MAXN], sumv[MAXN];
+int w[maxn], v[maxn];
+int lft[maxn], rt[maxn];
+ll cnt[maxn], sumv[maxn];
 
 // 给定W，计算总Y
 ll calc(int standard)
